@@ -7,5 +7,7 @@ project(workshop)
 
 target_sources(app PRIVATE
     src/main.c
+    src/sensor_ctrl.c
+    src/buzzer_ctrl.c
     src/drivers/buzzer.c
 )
