@@ -1,0 +1,5 @@
+board:
+  name: demo
+  full_name: Workshop Demo Board
+  socs:
+    - name: stm32f411xe
