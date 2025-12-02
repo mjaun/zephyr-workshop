@@ -1,0 +1,10 @@
+/ {
+	chosen {
+		workshop,sensor = &fake_sensor;
+	};
+
+	fake_sensor: fake_sensor {
+		compatible = "fake-sensor";
+		status = "okay";
+	};
+};

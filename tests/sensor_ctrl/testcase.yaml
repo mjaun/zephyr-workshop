@@ -1,0 +1,4 @@
+tests:
+  workshop.sensor-ctrl:
+    tags: workshop
+    platform_allow: native_sim

@@ -1,0 +1,6 @@
+description: |
+  Fake sensor driver for testing.
+
+compatible: "fake-sensor"
+
+include: [sensor-device.yaml, base.yaml]
