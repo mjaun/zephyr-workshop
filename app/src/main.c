@@ -1,7 +1,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/drivers/sensor.h>
-#include <zephyr/drivers/pwm.h>
+#include "drivers/buzzer.h"
 
 LOG_MODULE_REGISTER(main);
 
@@ -84,18 +84,6 @@ static void buzzer_thread_function(void *p1, void *p2, void *p3)
             continue;
         }
 
-        const uint32_t pulse_usec = (accel_z.val1 >= 9) ? 0 : 200;
-
-        ret = pwm_set(
-            buzzer_dev,
-            2,
-            PWM_USEC(1000),
-            PWM_USEC(pulse_usec),
-            PWM_POLARITY_NORMAL
-        );
-
-        if (ret != 0) {
-            LOG_ERR("pwm_set: %d", ret);
-        }
+        buzzer_enable(buzzer_dev, accel_z.val1 < 9);
     }
 }

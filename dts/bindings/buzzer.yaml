@@ -1,0 +1,15 @@
+description: |
+  Demonstration of a simple driver to control a buzzer.
+
+compatible: "buzzer"
+
+properties:
+  frequency:
+    type: int
+    required: true
+
+  pwms:
+    type: phandle-array
+    required: true
+    description: |
+      PWM specifier for the buzzer.
