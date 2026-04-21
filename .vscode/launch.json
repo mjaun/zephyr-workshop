@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Zephyr IDE: Debug",
+            "type": "cortex-debug",
+            "servertype": "pyocd",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "interface": "swd",
+            "targetId": "STM32U385RGTXQ",
+            "device": "STM32U385RGT6Q",
+            "gdbPath": "${command:zephyr-ide.get-gdb-path}",
+            "executable": "${command:zephyr-ide.get-zephyr-elf}",
+            "svdFile": "/workdir/boards/demo/STM32U385.svd",
+            "runToEntryPoint": "main"
+        },
+        {
+            "name": "Zephyr IDE: Attach",
+            "type": "cortex-debug",
+            "servertype": "pyocd",
+            "request": "attach",
+            "cwd": "${workspaceFolder}",
+            "interface": "swd",
+            "targetId": "STM32U385RGTXQ",
+            "device": "STM32U385RGT6Q",
+            "gdbPath": "${command:zephyr-ide.get-gdb-path}",
+            "executable": "${command:zephyr-ide.get-zephyr-elf}"
+        }
+    ]
+}

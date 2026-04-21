@@ -13,6 +13,7 @@
     "type=bind,source=${env:HOME}/.gitconfig,target=/home/user/.gitconfig",
     "type=bind,source=/dev,target=/dev"
   ],
+  "onCreateCommand": "bash /workdir/post-create.sh",
   "customizations": {
     "vscode": {
       "extensions": [
