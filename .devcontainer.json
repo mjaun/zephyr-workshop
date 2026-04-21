@@ -1,0 +1,23 @@
+{
+  "name": "${localWorkspaceFolderBasename} - zephyr-build:v0.28.7",
+  "image": "ghcr.io/zephyrproject-rtos/zephyr-build:v0.28.7", 
+  "privileged": true,
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workdir,type=bind",
+  "workspaceFolder": "/workdir",
+  "runArgs": [
+    "--network=host"
+  ],
+  "mounts": [
+    "type=volume,source=home,target=/home/user",
+    "type=bind,source=${env:HOME}/.ssh,target=/home/user/.ssh",
+    "type=bind,source=${env:HOME}/.gitconfig,target=/home/user/.gitconfig",
+    "type=bind,source=/dev,target=/dev"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mylonics.zephyr-ide-extension-pack"
+      ]
+    }
+  }
+}
