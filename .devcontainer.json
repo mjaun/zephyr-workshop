@@ -1,0 +1,25 @@
+{
+  "name": "${localWorkspaceFolderBasename}",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workdir,type=bind",
+  "workspaceFolder": "/workdir",
+  "privileged": true,
+  "runArgs": [
+    "--network=host"
+  ],
+  "mounts": [
+    "type=bind,source=${env:HOME}/.ssh,target=/home/user/.ssh",
+    "type=bind,source=${env:HOME}/.gitconfig,target=/home/user/.gitconfig",
+    "type=bind,source=/dev,target=/dev"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mylonics.zephyr-ide-extension-pack",
+        "/workdir/.vscode/extensions/cortex-debug-1.13.0-pre8.vsix"
+      ]
+    }
+  }
+}

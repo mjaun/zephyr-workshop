@@ -1,0 +1,38 @@
+{
+  "projects": {
+    "app": {
+      "rel_path": "app",
+      "name": "app",
+      "buildConfigs": {
+        "build/demo": {
+          "relBoardDir": "boards",
+          "relBoardSubDir": "demo",
+          "board": "demo",
+          "name": "build/demo",
+          "westBuildArgs": [],
+          "westBuildCMakeArgs": [],
+          "debugOptimization": "Don't set. Will be configured in included KConfig file",
+          "confFiles": {
+            "config": [],
+            "overlay": []
+          },
+          "launchTarget": "Zephyr IDE: Debug",
+          "buildDebugTarget": "Zephyr IDE: Debug",
+          "attachTarget": "Zephyr IDE: Attach",
+          "runnerConfigs": {
+            "pyocd": {
+              "runner": "pyocd",
+              "name": "pyocd",
+              "args": ""
+            }
+          }
+        }
+      },
+      "twisterConfigs": {},
+      "confFiles": {
+        "config": [],
+        "overlay": []
+      }
+    }
+  }
+}

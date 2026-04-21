@@ -1,0 +1,13 @@
+manifest:
+  projects:
+    - name: zephyr
+      url: https://github.com/zephyrproject-rtos/zephyr
+      revision: v4.4.0
+      import:
+        path-prefix: external
+        name-allowlist:
+          - cmsis_6
+          - picolibc
+          - segger
+          - hal_stm32
+          - hal_st

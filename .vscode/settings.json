@@ -1,0 +1,14 @@
+{
+	"zephyr-ide.toolchainDirectory": "/opt/toolchains",
+	"terminal.integrated.profiles.linux": {
+		"Zephyr IDE Terminal": null,
+	},
+	"terminal.integrated.defaultProfile.linux": "bash",
+	"C_Cpp.default.compileCommands": "${workspaceFolder}/.vscode/compile_commands.json",
+	"search.useIgnoreFiles": false,
+	"search.exclude": {
+		"**/.venv": true,
+		"**/build*": true,
+		"**/compile_commands.json": true
+	}
+}
