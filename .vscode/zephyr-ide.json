@@ -1,3 +1,40 @@
 {
-  "projects": {}
+  "projects": {
+    "blinky": {
+      "rel_path": "external/zephyr/samples/basic/blinky",
+      "name": "blinky",
+      "buildConfigs": {
+        "build/nucleo_u385rg_q": {
+          "relBoardSubDir": "st/nucleo_u385rg_q",
+          "board": "nucleo_u385rg_q",
+          "name": "build/nucleo_u385rg_q",
+          "westBuildArgs": [],
+          "westBuildCMakeArgs": [
+            "-DCONFIG_DEBUG_OPTIMIZATIONS=y",
+            "-DCONFIG_DEBUG_THREAD_INFO=y"
+          ],
+          "debugOptimization": "Debug",
+          "confFiles": {
+            "config": [],
+            "overlay": []
+          },
+          "launchTarget": "Zephyr IDE: Debug",
+          "buildDebugTarget": "Zephyr IDE: Debug",
+          "attachTarget": "Zephyr IDE: Attach",
+          "runnerConfigs": {
+            "pyocd": {
+              "runner": "pyocd",
+              "name": "pyocd",
+              "args": ""
+            }
+          }
+        }
+      },
+      "twisterConfigs": {},
+      "confFiles": {
+        "config": [],
+        "overlay": []
+      }
+    }
+  }
 }
