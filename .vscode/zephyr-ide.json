@@ -1,8 +1,8 @@
 {
   "projects": {
-    "blinky": {
-      "rel_path": "external/zephyr/samples/basic/blinky",
-      "name": "blinky",
+    "app": {
+      "rel_path": "app",
+      "name": "app",
       "buildConfigs": {
         "build/nucleo_u385rg_q": {
           "relBoardSubDir": "st/nucleo_u385rg_q",
