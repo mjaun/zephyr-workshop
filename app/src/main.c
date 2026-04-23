@@ -1,13 +1,7 @@
-#include <zephyr/logging/log.h>
-
-LOG_MODULE_REGISTER(main);
+#include <zephyr/kernel.h>
 
 int main(void)
 {
-    while (true) {
-        LOG_INF("Hello World! %s", CONFIG_BOARD_TARGET);
-        k_sleep(K_MSEC(1000));
-    }
-
+    printk("Hello World! %s\n", CONFIG_BOARD_TARGET);
     return 0;
 }
