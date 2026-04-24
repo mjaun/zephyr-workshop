@@ -1,6 +1,8 @@
 {
-  "name": "${localWorkspaceFolderBasename} - zephyr-build:v0.28.7",
-  "image": "ghcr.io/zephyrproject-rtos/zephyr-build:v0.28.7", 
+  "name": "${localWorkspaceFolderBasename}",
+  "build": { 
+    "dockerfile": "Dockerfile"
+  },
   "privileged": true,
   "workspaceMount": "source=${localWorkspaceFolder},target=/workdir,type=bind",
   "workspaceFolder": "/workdir",
@@ -8,12 +10,13 @@
     "--network=host"
   ],
   "mounts": [
-    "type=volume,source=home,target=/home/user",
     "type=bind,source=${env:HOME}/.ssh,target=/home/user/.ssh",
     "type=bind,source=${env:HOME}/.gitconfig,target=/home/user/.gitconfig",
     "type=bind,source=/dev,target=/dev"
   ],
-  "onCreateCommand": "bash /workdir/post-create.sh",
+  "containerEnv": {
+    "ZEPHYR_SDK_INSTALL_DIR": "/opt/toolchains"
+  },
   "customizations": {
     "vscode": {
       "extensions": [

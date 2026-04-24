@@ -15,3 +15,4 @@ manifest:
           - picolibc
           - segger
           - hal_stm32
+          - hal_st
