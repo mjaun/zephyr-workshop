@@ -10,11 +10,8 @@
           "board": "demo",
           "name": "build/demo",
           "westBuildArgs": [],
-          "westBuildCMakeArgs": [
-            "-DCONFIG_DEBUG_OPTIMIZATIONS=y",
-            "-DCONFIG_DEBUG_THREAD_INFO=y"
-          ],
-          "debugOptimization": "Debug",
+          "westBuildCMakeArgs": [],
+          "debugOptimization": "Don't set. Will be configured in included KConfig file",
           "confFiles": {
             "config": [],
             "overlay": []
