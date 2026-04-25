@@ -13,6 +13,11 @@
 		zephyr,sram = &sram0;
 		zephyr,flash = &flash0;
 	};
+
+	aliases {
+		accelerometer = &lsm6dso16is;
+		buzzer = &pwm1;
+	};
 };
 
 // MSIS requires LSE clock to be enabled for auto-calibration
