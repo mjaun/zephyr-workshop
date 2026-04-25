@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="West" type="WestRunConfiguration" factoryName="WestRunConfiguration" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="workshop" TARGET_NAME="zephyr_final" CONFIG_NAME="West">
+    <option name="debugOptions" value="-r pyocd" />
+    <option name="flashOptions" value="-r pyocd" />
+    <method v="2" />
+  </configuration>
+</component>

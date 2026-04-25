@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Black">
+    <option name="sdkName" value="Python 3.12 (workdir)" />
+  </component>
+  <component name="CMakePythonSetting">
+    <option name="pythonIntegrationState" value="YES" />
+  </component>
+  <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$/app">
+    <contentRoot DIR="$PROJECT_DIR$" />
+  </component>
+  <component name="CidrRootsConfiguration">
+    <excludeRoots>
+      <file path="$PROJECT_DIR$/app/build" />
+    </excludeRoots>
+  </component>
+  <component name="WestSettings"><![CDATA[{
+  "buildDir": "build/demo",
+  "buildOptions": "-b demo -- -DBOARD_ROOT='/workdir'"
+}]]></component>
+</project>

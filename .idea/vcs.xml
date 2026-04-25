@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/external/modules/debug/segger" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/external/modules/hal/cmsis_6" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/external/modules/hal/st" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/external/modules/hal/stm32" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/external/modules/lib/picolibc" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/external/zephyr" vcs="Git" />
+  </component>
+</project>
