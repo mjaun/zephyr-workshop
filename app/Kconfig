@@ -1,0 +1,11 @@
+menu "Application"
+
+config APP_HELLO_WORLD_MSG
+	string "Hello World Message"
+	default "Hello World!"
+	help
+	  Customizable hello world message.
+
+endmenu
+
+source "Kconfig.zephyr"
