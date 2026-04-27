@@ -7,79 +7,115 @@
 
 LOG_MODULE_REGISTER(main);
 
-static void read_sensor(struct sensor_value* accel_z);
-static void control_buzzer(const struct sensor_value *accel_z);
+static void sensor_timer_callback(struct k_timer *timer);
+static void sensor_thread_function(void *p1, void *p2, void *p3);
+static void buzzer_thread_function(void *p1, void *p2, void *p3);
+
+K_TIMER_DEFINE(sensor_timer, sensor_timer_callback, NULL);
+K_SEM_DEFINE(sensor_sem, 0, 1);
+K_THREAD_DEFINE(sensor_thread, 1024, sensor_thread_function, NULL, NULL, NULL, 5, 0, 0);
+K_MSGQ_DEFINE(message_queue, sizeof(struct sensor_value), 3, 1);
+K_THREAD_DEFINE(buzzer_thread, 1024, buzzer_thread_function, NULL, NULL, NULL, 5, 0, 0);
 
 int main(void)
 {
     LOG_INF("%s %s", CONFIG_APP_HELLO_WORLD_MSG, CONFIG_BOARD_TARGET);
 
-    while (true) {
-        k_sleep(K_MSEC(20));
-
-        struct sensor_value accel_z = {0};
-        read_sensor(&accel_z);
-        control_buzzer(&accel_z);
-    }
+    k_timer_start(&sensor_timer, K_MSEC(20), K_MSEC(20));
 
     return 0;
 }
 
-void read_sensor(struct sensor_value *accel_z)
+static void sensor_timer_callback(struct k_timer *timer)
 {
+    ARG_UNUSED(timer);
+
+    k_sem_give(&sensor_sem);
+}
+
+static void sensor_thread_function(void *p1, void *p2, void *p3)
+{
+    ARG_UNUSED(p1);
+    ARG_UNUSED(p2);
+    ARG_UNUSED(p3);
+
     const struct device* sensor_dev = DEVICE_DT_GET(DT_ALIAS(accelerometer));
+    struct sensor_value accel_z;
     int ret = 0;
 
-    ret = sensor_sample_fetch(sensor_dev);
+    while (true) {
+        k_sem_take(&sensor_sem, K_FOREVER);
 
-    if (ret != 0) {
-        LOG_ERR("sensor_sample_fetch: %d", ret);
-        return;
-    }
+        ret = sensor_sample_fetch(sensor_dev);
 
-    ret = sensor_channel_get(sensor_dev, SENSOR_CHAN_ACCEL_Z, accel_z);
+        if (ret != 0) {
+            LOG_ERR("sensor_sample_fetch: %d", ret);
+            continue;
+        }
 
-    if (ret != 0) {
-        LOG_ERR("sensor_channel_get: %d", ret);
-        return;
+        ret = sensor_channel_get(sensor_dev, SENSOR_CHAN_ACCEL_Z, &accel_z);
+
+        if (ret != 0) {
+            LOG_ERR("sensor_channel_get: %d", ret);
+            continue;
+        }
+
+        ret = k_msgq_put(&message_queue, &accel_z, K_NO_WAIT);
+
+        if (ret != 0) {
+            LOG_WRN("k_msgq_put: %d", ret);
+        }
     }
 }
 
-void control_buzzer(const struct sensor_value *accel_z)
+static void buzzer_thread_function(void *p1, void *p2, void *p3)
 {
+    ARG_UNUSED(p1);
+    ARG_UNUSED(p2);
+    ARG_UNUSED(p3);
+
     const struct device* buzzer_dev = DEVICE_DT_GET(DT_ALIAS(buzzer));
+    struct sensor_value accel_z;
     int ret = 0;
 
-    const float value = sensor_value_to_float(accel_z);
+    while (true) {
+        ret = k_msgq_get(&message_queue, &accel_z, K_FOREVER);
 
-    const float min_freq = 500;
-    const float max_freq = 3000;
-    const float min_accel = 8;
-    const float max_accel = -9;
+        if (ret != 0) {
+            LOG_ERR("k_msgq_get: %d", ret);
+            continue;
+        }
 
-    if (value > min_accel) {
-        ret = pwm_set(
-            buzzer_dev,
-            PWM_CHANNEL,
-            0,
-            0,
-            PWM_POLARITY_NORMAL
-        );
-    } else {
-        const float freq = min_freq + (value - min_accel) * (max_freq - min_freq) / (max_accel - min_accel);
-        const uint32_t period = PWM_HZ((uint32_t) freq);
-        const uint32_t pulse = period / 2;
+        const float min_freq = 500;
+        const float max_freq = 3000;
+        const float min_accel = 8;
+        const float max_accel = -9;
+        const float value = sensor_value_to_float(&accel_z);
 
-        ret = pwm_set(
-            buzzer_dev,
-            PWM_CHANNEL,
-            period,
-            pulse,
-            PWM_POLARITY_NORMAL
-        );
-    }
+        if (value > min_accel) {
+            ret = pwm_set(
+                buzzer_dev,
+                PWM_CHANNEL,
+                0,
+                0,
+                PWM_POLARITY_NORMAL
+            );
+        } else {
+            const float freq = min_freq + (value - min_accel) * (max_freq - min_freq) / (max_accel - min_accel);
+            const uint32_t period = PWM_HZ((uint32_t) freq);
+            const uint32_t pulse = period / 2;
 
-    if (ret != 0) {
-        LOG_ERR("pwm_set: %d", ret);
+            ret = pwm_set(
+                buzzer_dev,
+                PWM_CHANNEL,
+                period,
+                pulse,
+                PWM_POLARITY_NORMAL
+            );
+        }
+
+        if (ret != 0) {
+            LOG_ERR("pwm_set: %d", ret);
+        }
     }
 }
