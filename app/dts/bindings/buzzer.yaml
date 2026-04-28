@@ -1,0 +1,19 @@
+description: |
+  Demonstration of a simple driver to control a buzzer.
+
+compatible: "buzzer"
+
+properties:
+  pwm:
+    type: phandle
+    required: true
+    description: |
+      PWM to be used for the buzzer.
+  
+  channel:
+    type: int
+    required: true
+
+  flags:
+    type: int
+    required: true
