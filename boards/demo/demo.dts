@@ -16,7 +16,15 @@
 
 	aliases {
 		accelerometer = &lsm6dso16is;
-		buzzer = &pwm1;
+		buzzer = &buzzer;
+	};
+
+	buzzer: buzzer {
+		compatible = "buzzer";
+		pwm = <&pwm1>;
+		channel = <2>;
+		flags = <PWM_POLARITY_NORMAL>;
+		status = "okay";
 	};
 };
 
