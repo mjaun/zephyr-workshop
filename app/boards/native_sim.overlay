@@ -1,0 +1,27 @@
+#include <zephyr/dt-bindings/pwm/pwm.h>
+
+/ {
+	aliases {
+		accelerometer = &sensor_sim;
+		buzzer = &buzzer;
+	};
+
+	sensor_sim: sensor_sim {
+		compatible = "sensor-sim";
+		state-file = "/tmp/app-sensor";
+		status = "okay";
+	};
+
+	pwm_sim: pwm_sim {
+		compatible = "pwm-sim";
+		status = "okay";
+	};
+
+	buzzer: buzzer {
+		compatible = "buzzer";
+		pwm = <&pwm_sim>;
+		channel = <2>;
+		flags = <PWM_POLARITY_NORMAL>;
+		status = "okay";
+	};
+};

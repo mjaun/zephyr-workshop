@@ -7,3 +7,10 @@ target_sources(app PRIVATE
     src/drivers/buzzer.c
     src/main.c 
 )
+
+if(CONFIG_ARCH_POSIX)
+    target_sources(app PRIVATE 
+        src/drivers/sensor_sim.c
+        src/drivers/pwm_sim.c
+    )
+endif()

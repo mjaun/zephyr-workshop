@@ -1,0 +1,9 @@
+description: |
+  Simulated sensor.
+
+compatible: "sensor-sim"
+
+properties:
+  state-file:
+    type: string
+    required: true

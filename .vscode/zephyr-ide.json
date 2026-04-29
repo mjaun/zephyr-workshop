@@ -14,9 +14,9 @@
             "config": [],
             "overlay": []
           },
-          "launchTarget": "Zephyr IDE: Debug",
-          "buildDebugTarget": "Zephyr IDE: Debug",
-          "attachTarget": "Zephyr IDE: Attach",
+          "launchTarget": "Debug Target",
+          "buildDebugTarget": "Debug Target",
+          "attachTarget": "Attach Target",
           "runnerConfigs": {
             "pyocd": {
               "runner": "pyocd",
@@ -25,6 +25,28 @@
             }
           },
           "activeProfile": "pyocd"
+        },
+        "build/native_sim": {
+          "relBoardSubDir": "native/native_sim",
+          "board": "native_sim/native",
+          "name": "build/native_sim",
+          "westBuildArgs": [],
+          "westBuildCMakeArgs": [],
+          "confFiles": {
+            "config": [],
+            "overlay": []
+          },
+          "launchTarget": "Debug Sim",
+          "buildDebugTarget": "Debug Sim",
+          "attachTarget": "Attach Sim",
+          "runnerConfigs": {
+            "default": {
+              "runner": "default",
+              "name": "default",
+              "args": ""
+            }
+          },
+          "activeProfile": "native"
         }
       },
       "twisterConfigs": {},
@@ -44,11 +66,25 @@
       },
       "debug": {
         "kind": "launch",
-        "name": "Zephyr IDE: Debug"
+        "name": "Debug Target"
       },
       "attach": {
         "kind": "launch",
-        "name": "Zephyr IDE: Attach"
+        "name": "Attach Target"
+      }
+    },
+    {
+      "name": "native",
+      "flash": {
+        "kind": "auto"
+      },
+      "debug": {
+        "kind": "launch",
+        "name": "Debug Sim"
+      },
+      "attach": {
+        "kind": "launch",
+        "name": "Attach Sim"
       }
     }
   ]
