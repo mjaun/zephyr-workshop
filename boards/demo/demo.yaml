@@ -1,0 +1,8 @@
+identifier: demo
+name: Workshop Demo Board
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+ram: 256
+flash: 1024
