@@ -1,6 +1,8 @@
 #include "SensorReader.hpp"
 
-SensorReader::SensorReader(Thread &thread, MessageQueue<float> &message_queue, Accelerometer &accelerometer) : 
+SensorReader::SensorReader(Thread &thread, 
+                           MessageQueue<float> &message_queue, 
+                           IAccelerometer &accelerometer) : 
     _thread(thread),
     _message_queue(message_queue),
     _accelerometer(accelerometer),

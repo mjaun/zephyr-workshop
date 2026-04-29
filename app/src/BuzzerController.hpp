@@ -9,7 +9,7 @@
 class BuzzerController
 {
 public:
-    BuzzerController(Thread &thread, MessageQueue<float> &message_queue, Buzzer &Buzzer);
+    BuzzerController(Thread &thread, MessageQueue<float> &message_queue, IBuzzer &Buzzer);
 
     void start();
 
@@ -21,7 +21,7 @@ public:
 private:
     Thread &_thread;
     MessageQueue<float> &_message_queue;
-    Buzzer &_buzzer;
+    IBuzzer &_buzzer;
 
     void thread_main();
 };

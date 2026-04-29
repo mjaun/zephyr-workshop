@@ -7,4 +7,5 @@ set -euo pipefail
 west twister \
     --board-root /workdir/boards \
     --platform native_sim \
+    --platform native_sim/native/64 \
     --testsuite-root app/tests
