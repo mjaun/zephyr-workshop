@@ -1,6 +1,7 @@
 #pragma once
 
 #include <zephyr/kernel.h>
+#include "ApplicationAssert.hpp"
 
 template <typename T, unsigned int max_msgs>
 class MessageQueue
@@ -13,13 +14,15 @@ public:
 
     void put(const T &item)
     {
-        (void)k_msgq_put(&_msgq, &item, K_FOREVER);
+        int ret = k_msgq_put(&_msgq, &item, K_NO_WAIT);
+        APP_ASSERT(ret == 0);
     }
 
     T get()
     {
         T item;
-        (void)k_msgq_get(&_msgq, &item, K_FOREVER);
+        int ret = k_msgq_get(&_msgq, &item, K_FOREVER);
+        APP_ASSERT(ret == 0);
         return item;
     }
 
