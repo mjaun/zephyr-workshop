@@ -1,15 +1,17 @@
 #pragma once
 
-#include <zephyr/kernel.h>
 #include "ApplicationAssert.hpp"
+#include <zephyr/kernel.h>
+#include <memory>
 
-template <typename T, unsigned int max_msgs>
+template <typename T>
 class MessageQueue
 {
 public:
-    MessageQueue()
+    MessageQueue(uint32_t max_msgs)
     {
-        k_msgq_init(&_msgq, _buf, sizeof(T), max_msgs);
+        _buf = std::make_unique<char[]>(sizeof(T) * max_msgs);
+        k_msgq_init(&_msgq, _buf.get(), sizeof(T), max_msgs);
     }
 
     void put(const T &item)
@@ -33,5 +35,5 @@ public:
 
 private:
     struct k_msgq _msgq;
-    char _buf[sizeof(T) * max_msgs];
+    std::unique_ptr<char[]> _buf;
 };
