@@ -1,3 +1,5 @@
 tests:
   app.ztest:
-    platform_allow: native_sim
+    platform_allow: 
+      - demo
+      - native_sim
