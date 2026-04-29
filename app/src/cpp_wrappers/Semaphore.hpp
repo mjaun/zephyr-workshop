@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ApplicationAssert.hpp"
 #include <zephyr/kernel.h>
 
 class Semaphore
@@ -17,7 +18,8 @@ public:
 
     void take()
     {
-        (void)k_sem_take(&_sem, K_FOREVER);
+        int ret = k_sem_take(&_sem, K_FOREVER);
+        APP_ASSERT(ret == 0);
     }
 
     Semaphore(const Semaphore &) = delete;

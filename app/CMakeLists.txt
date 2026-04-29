@@ -4,6 +4,7 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(workshop)
 
 target_sources(app PRIVATE
+    src/cpp_wrappers/ApplicationAssert.cpp
     src/drivers/buzzer.c
     src/frequency.c
     src/main.cpp
