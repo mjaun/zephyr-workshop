@@ -6,7 +6,7 @@ project(workshop)
 target_sources(app PRIVATE
     src/drivers/buzzer.c
     src/frequency.c
-    src/main.c
+    src/main.cpp
 )
 
 if(CONFIG_ARCH_POSIX)

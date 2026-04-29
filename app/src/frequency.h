@@ -3,6 +3,10 @@
 
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * Map an acceleration value to a buzzer frequency in Hz.
  *
@@ -11,5 +15,9 @@
  * for accel in [8.0, -9.0].
  */
 uint32_t accel_to_freq(float accel);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* FREQUENCY_H */
