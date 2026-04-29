@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Zephyr IDE: Debug",
+            "name": "Debug Target",
             "type": "cortex-debug",
             "servertype": "pyocd",
             "request": "launch",
@@ -19,7 +19,7 @@
             "runToEntryPoint": "main"
         },
         {
-            "name": "Zephyr IDE: Attach",
+            "name": "Attach Target",
             "type": "cortex-debug",
             "servertype": "pyocd",
             "request": "attach",
@@ -29,6 +29,24 @@
             "device": "STM32U385RGT6Q",
             "gdbPath": "${command:zephyr-ide.get-gdb-path}",
             "executable": "${command:zephyr-ide.get-zephyr-elf}"
+        },
+        {
+            "name": "Debug Sim",
+            "type": "cppdbg",
+            "request": "launch",
+            "MIMode": "gdb",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "program": "${command:zephyr-ide.get-zephyr-elf-dir}/zephyr.exe",
+            "miDebuggerPath": "${command:zephyr-ide.get-gdb-path}",
+        },
+        {
+            "name": "Attach Sim",
+            "type": "cppdbg",
+            "request": "attach",
+            "MIMode": "gdb",
+            "program": "${command:zephyr-ide.get-zephyr-elf-dir}/zephyr.exe",
+            "miDebuggerPath": "${command:zephyr-ide.get-gdb-path}",
         }
     ]
 }

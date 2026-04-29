@@ -16,13 +16,35 @@
             "config": [],
             "overlay": []
           },
-          "launchTarget": "Zephyr IDE: Debug",
-          "buildDebugTarget": "Zephyr IDE: Debug",
-          "attachTarget": "Zephyr IDE: Attach",
+          "launchTarget": "Debug Target",
+          "buildDebugTarget": "Debug Target",
+          "attachTarget": "Attach Target",
           "runnerConfigs": {
             "pyocd": {
               "runner": "pyocd",
               "name": "pyocd",
+              "args": ""
+            }
+          }
+        },
+        "build/native_sim": {
+          "relBoardSubDir": "native/native_sim",
+          "board": "native_sim/native",
+          "name": "build/native_sim",
+          "westBuildArgs": [],
+          "westBuildCMakeArgs": [],
+          "debugOptimization": "Don't set. Will be configured in included KConfig file",
+          "confFiles": {
+            "config": [],
+            "overlay": []
+          },
+          "launchTarget": "Debug Sim",
+          "buildDebugTarget": "Debug Sim",
+          "attachTarget": "Attach Sim",
+          "runnerConfigs": {
+            "default": {
+              "runner": "default",
+              "name": "default",
               "args": ""
             }
           }
