@@ -1,0 +1,6 @@
+common:
+  harness: gtest
+tests:
+  app.controller_reader:
+    platform_allow: 
+      - native_sim/native/64

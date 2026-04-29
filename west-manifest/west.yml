@@ -11,3 +11,8 @@ manifest:
           - segger
           - hal_stm32
           - hal_st
+
+    - name: googletest
+      url: https://github.com/google/googletest
+      revision: v1.17.0
+      path: external/googletest
