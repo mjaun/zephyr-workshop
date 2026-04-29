@@ -2,6 +2,7 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/drivers/sensor.h>
 #include "drivers/buzzer.h"
+#include "frequency.h"
 
 #define PWM_CHANNEL 2
 
@@ -86,17 +87,13 @@ static void buzzer_thread_function(void *p1, void *p2, void *p3)
             continue;
         }
 
-        const float min_freq = 500;
-        const float max_freq = 3000;
-        const float min_accel = 8;
-        const float max_accel = -9;
         const float value = sensor_value_to_float(&accel_z);
+        const uint32_t freq = accel_to_freq(value);
 
-        if (value > min_accel) {
+        if (freq == 0) {
             ret = buzzer_disable(buzzer_dev);
         } else {
-            const float freq = min_freq + (value - min_accel) * (max_freq - min_freq) / (max_accel - min_accel);
-            ret = buzzer_enable(buzzer_dev, (uint32_t) freq);
+            ret = buzzer_enable(buzzer_dev, freq);
         }
 
         if (ret != 0) {
