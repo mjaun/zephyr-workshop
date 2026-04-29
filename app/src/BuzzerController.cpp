@@ -1,7 +1,9 @@
 #include "BuzzerController.hpp"
 #include "frequency.h"
 
-BuzzerController::BuzzerController(Thread &thread, MessageQueue<float> &message_queue, Buzzer &buzzer) :
+BuzzerController::BuzzerController(Thread &thread, 
+                                   MessageQueue<float> &message_queue, 
+                                   IBuzzer &buzzer) :
     _thread(thread),
     _message_queue(message_queue),
     _buzzer(buzzer)

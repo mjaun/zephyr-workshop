@@ -1,0 +1,6 @@
+common:
+  harness: gtest
+tests:
+  app.gtest:
+    platform_allow: 
+      - native_sim/native/64

@@ -3,7 +3,15 @@
 #include "ApplicationAssert.hpp"
 #include <zephyr/drivers/sensor.h>
 
-class Accelerometer
+class IAccelerometer
+{
+public:
+    virtual ~IAccelerometer() = default;
+
+    virtual float read() = 0;
+};
+
+class Accelerometer : public IAccelerometer
 {
 public:
     Accelerometer(const struct device *device) : _device(device) {}
