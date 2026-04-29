@@ -1,5 +1,6 @@
 .venv/
 external
 **/build*/
+**/twister-out*/
 .vscode/compile_commands.json
 .vscode/extensions.json
