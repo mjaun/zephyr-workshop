@@ -1,0 +1,4 @@
+description: |
+  Simulated PWM output.
+
+compatible: "pwm-sim"
