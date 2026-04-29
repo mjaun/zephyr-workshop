@@ -9,7 +9,7 @@
 class SensorReader
 {
 public:
-    SensorReader(Thread &thread, MessageQueue<float> &message_queue, Accelerometer &accelerometer);
+    SensorReader(Thread &thread, MessageQueue<float> &message_queue, IAccelerometer &accelerometer);
 
     void start();
 
@@ -21,7 +21,7 @@ public:
 private:
     Thread &_thread;
     MessageQueue<float> &_message_queue;
-    Accelerometer &_accelerometer;
+    IAccelerometer &_accelerometer;
 
     SoftwareTimer _timer;
     Semaphore _semaphore;

@@ -20,6 +20,11 @@ public:
         );
     }
 
+    ~Thread()
+    {
+        k_thread_abort(_tid);
+    }
+
     void start(EntryFn entry)
     {
         APP_ASSERT(!_entry);

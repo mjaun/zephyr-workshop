@@ -3,7 +3,16 @@
 #include "ApplicationAssert.hpp"
 #include "drivers/buzzer.h"
 
-class Buzzer
+class IBuzzer
+{
+public:
+    virtual ~IBuzzer() = default;
+
+    virtual void enable(uint32_t freq) = 0;
+    virtual void disable() = 0;
+};
+
+class Buzzer : public IBuzzer
 {
 public:
     Buzzer(const struct device *device) : _device(device) {}
