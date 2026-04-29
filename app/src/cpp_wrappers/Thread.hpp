@@ -1,13 +1,15 @@
 #pragma once
 
+#include "ApplicationAssert.hpp"
 #include <zephyr/kernel.h>
+#include <functional>
 
 class Thread
 {
 public:
-    using EntryFn = void (*)();
+    using EntryFn = std::function<void()>;
 
-    Thread(k_thread_stack_t* stack, size_t stack_size, EntryFn entry, int prio) : _entry(entry)
+    Thread(k_thread_stack_t* stack, size_t stack_size, int prio)
     {
         _tid = k_thread_create(
             &_thread, 
@@ -18,8 +20,10 @@ public:
         );
     }
 
-    void start()
+    void start(EntryFn entry)
     {
+        APP_ASSERT(!_entry);
+        _entry = entry;
         k_thread_start(_tid);
     }
 
@@ -31,7 +35,7 @@ public:
 private:
     struct k_thread _thread;
     k_tid_t _tid;
-    const EntryFn _entry;
+    EntryFn _entry;
 
     static void entry_wrapper(void *arg1, void *arg2, void *arg3)
     {

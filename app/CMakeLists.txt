@@ -9,6 +9,8 @@ target_sources(app PRIVATE
     src/cpp_wrappers/ApplicationAssert.cpp
     src/drivers/buzzer.c
     src/frequency.c
+    src/SensorReader.cpp
+    src/BuzzerController.cpp
     src/main.cpp
 )
 

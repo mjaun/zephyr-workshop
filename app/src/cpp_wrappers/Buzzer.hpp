@@ -1,3 +1,5 @@
+#pragma once
+
 #include "ApplicationAssert.hpp"
 #include "drivers/buzzer.h"
 

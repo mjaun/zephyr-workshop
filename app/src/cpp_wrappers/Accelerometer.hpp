@@ -1,3 +1,5 @@
+#pragma once
+
 #include "ApplicationAssert.hpp"
 #include <zephyr/drivers/sensor.h>
 
