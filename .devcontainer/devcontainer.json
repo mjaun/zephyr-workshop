@@ -18,7 +18,7 @@
     "vscode": {
       "extensions": [
         "mylonics.zephyr-ide-extension-pack",
-        "/workdir/.vscode/extensions/cortex-debug-1.13.0-pre8.vsix"
+        "/workdir/.devcontainer/cortex-debug-1.13.0-pre8.vsix"
       ]
     }
   }

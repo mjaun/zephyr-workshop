@@ -29,7 +29,8 @@
             "targetId": "STM32U385RGTXQ",
             "device": "STM32U385RGT6Q",
             "gdbPath": "${command:zephyr-ide.get-gdb-path}",
-            "executable": "${command:zephyr-ide.get-zephyr-elf}"
+            "executable": "${command:zephyr-ide.get-zephyr-elf}",
+            "svdFile": "/workdir/boards/demo/STM32U385.svd"
         }
     ]
 }

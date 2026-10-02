@@ -2,7 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/external/googletest" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external/modules/debug/segger" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external/modules/hal/cmsis_6" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external/modules/hal/st" vcs="Git" />
