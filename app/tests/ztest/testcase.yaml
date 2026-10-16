@@ -3,3 +3,5 @@ tests:
     platform_allow: 
       - demo
       - native_sim
+    simulation_exclude:
+      - renode

@@ -1,0 +1,9 @@
+sample:
+  name: Workshop application
+tests:
+  app.renode.buzzer:
+    harness: robot
+    harness_config:
+      robot_testsuite: tests/robot/buzzer.robot
+    platform_allow: demo
+    tags: renode

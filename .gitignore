@@ -5,3 +5,7 @@ build*/
 twister-out*/
 .vscode/compile_commands.json
 .vscode/extensions.json
+log.html
+report.html
+robot_output.xml
+robot-results/

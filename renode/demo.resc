@@ -1,0 +1,20 @@
+:name: Workshop Demo Board (STM32U385)
+using sysbus
+
+# Renode cannot expand variables inside @path literals, so every file is its own variable.
+# Defaults assume the dev container layout; the Robot keyword "Prepare Demo Machine"
+# (app/tests/robot/buzzer_keywords.resource) overrides them relative to the repository.
+$elf?=@/workdir/app/build/demo/zephyr/zephyr.elf
+$repl?=@/workdir/renode/stm32u385.repl
+$lsm6dso16is_cs?=@/workdir/renode/lsm6dso16is.cs
+$stm32_i2c_cs?=@/workdir/renode/stm32_i2c.cs
+$stm32u3_stubs_cs?=@/workdir/renode/stm32u3_stubs.cs
+
+include $lsm6dso16is_cs
+include $stm32_i2c_cs
+include $stm32u3_stubs_cs
+
+mach create "demo"
+machine LoadPlatformDescription $repl
+showAnalyzer sysbus.usart1
+sysbus LoadELF $elf

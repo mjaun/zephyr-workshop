@@ -1,0 +1,51 @@
+flash: Memory.MappedMemory @ sysbus 0x08000000
+    size: 0x100000
+
+sram: Memory.MappedMemory @ sysbus 0x20000000
+    size: 0x40000
+
+usart1: UART.STM32F7_USART @ sysbus 0x40013800
+    frequency: 96000000
+    IRQ -> nvic@61
+
+nvic: IRQControllers.NVIC @ sysbus 0xE000E000
+    priorityMask: 0xF0
+    systickFrequency: 96000000
+    IRQ -> cpu@0
+
+cpu: CPU.CortexM @ sysbus
+    cpuType: "cortex-m33"
+    nvic: nvic
+
+// I2C2 (C#, see stm32_i2c.cs) with the LSM6DSO16IS accelerometer stub @ 0x6a (C#, see lsm6dso16is.cs)
+i2c2: I2C.STM32U3_I2C @ sysbus 0x40005800
+    EventInterrupt -> nvic@57
+    ErrorInterrupt -> nvic@58
+
+lsm6dso16is: Sensors.LSM6DSO16IS_Stub @ i2c2 0x6a
+
+// TIM3: PWM output of the buzzer (CH2 on PC7), observed through its registers
+timers3: Timers.STM32_Timer @ sysbus 0x40000400
+    frequency: 1000000
+    initialLimit: 0xFFFF
+    -> nvic@46
+
+// PWR: C# stub (write-then-read-back, VOSR ready flags set, see stm32u3_stubs.cs)
+pwr: Miscellaneous.STM32U3_PWR @ sysbus 0x40030800
+
+// RCC: C# stub that reports oscillators/PLLs as ready (see stm32u3_stubs.cs)
+rcc: Miscellaneous.STM32U3_RCC @ sysbus 0x40030C00
+
+// FLASH controller: plain memory so ACR latency write-then-read-back succeeds
+flashctl: Memory.MappedMemory @ sysbus 0x40022000
+    size: 0x400
+
+// GPIO: accept pinctrl configuration (no EXTI model)
+gpioPortA: GPIOPort.STM32_GPIOPort @ sysbus <0x42020000, +0x400>
+    numberOfAFs: 16
+
+gpioPortB: GPIOPort.STM32_GPIOPort @ sysbus <0x42020400, +0x400>
+    numberOfAFs: 16
+
+gpioPortC: GPIOPort.STM32_GPIOPort @ sysbus <0x42020800, +0x400>
+    numberOfAFs: 16
