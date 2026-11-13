@@ -15,7 +15,12 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "mylonics.zephyr-ide-extension-pack",
+        // extensions from mylonics.zephyr-ide-extension-pack with pinned versions
+        "mylonics.zephyr-ide@4.2.0",
+        "ms-vscode.cpptools@1.35.6",
+        "ms-vscode.vscode-serial-monitor@0.13.1",
+        "twxs.cmake@0.0.17",
+        "kylemicallefbonnici.dts-lsp@0.14.6",
         "/opt/vscode-extensions/cortex-debug.vsix"
       ]
     }
