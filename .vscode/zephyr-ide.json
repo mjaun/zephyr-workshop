@@ -14,16 +14,6 @@
             "config": [],
             "overlay": []
           },
-          "launchTarget": "Zephyr IDE: Debug",
-          "buildDebugTarget": "Zephyr IDE: Debug",
-          "attachTarget": "Zephyr IDE: Attach",
-          "runnerConfigs": {
-            "pyocd": {
-              "runner": "pyocd",
-              "name": "pyocd",
-              "args": ""
-            }
-          },
           "activeProfile": "pyocd"
         }
       },

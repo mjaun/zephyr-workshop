@@ -11,10 +11,8 @@
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "interface": "swd",
-            "targetId": "STM32U385RGTXQ",
-            "device": "STM32U385RGT6Q",
-            "armToolchainPath": "/opt/toolchains/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin",
-            "toolchainPrefix": "arm-zephyr-eabi",
+            "targetId": "stm32u385rgtxq",
+            "gdbPath": "${command:zephyr-ide.get-gdb-path}",
             "executable": "${command:zephyr-ide.get-zephyr-elf}",
             "svdFile": "/workdir/boards/demo/STM32U385.svd",
             "runToEntryPoint": "main"
@@ -26,8 +24,7 @@
             "request": "attach",
             "cwd": "${workspaceFolder}",
             "interface": "swd",
-            "targetId": "STM32U385RGTXQ",
-            "device": "STM32U385RGT6Q",
+            "targetId": "stm32u385rgtxq",
             "gdbPath": "${command:zephyr-ide.get-gdb-path}",
             "executable": "${command:zephyr-ide.get-zephyr-elf}",
             "svdFile": "/workdir/boards/demo/STM32U385.svd"
