@@ -71,6 +71,29 @@
         "config": [],
         "overlay": []
       }
+    },
+    "gtest": {
+      "relPath": "app/tests/gtest",
+      "name": "gtest",
+      "buildConfigs": {
+        "build/native_sim": {
+          "relBoardSubDir": "native/native_sim",
+          "board": "native_sim/native/64",
+          "name": "build/native_sim",
+          "westBuildArgs": [],
+          "westBuildCMakeArgs": [],
+          "confFiles": {
+            "config": [],
+            "overlay": []
+          },
+          "activeProfile": "native"
+        }
+      },
+      "twisterConfigs": {},
+      "confFiles": {
+        "config": [],
+        "overlay": []
+      }
     }
   },
   "runnerProfiles": [
