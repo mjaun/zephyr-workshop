@@ -35,6 +35,42 @@
         "overlay": []
       },
       "relPath": "app"
+    },
+    "ztest": {
+      "relPath": "app/tests/ztest",
+      "name": "ztest",
+      "buildConfigs": {
+        "build/demo": {
+          "relBoardDir": "boards",
+          "relBoardSubDir": "demo",
+          "board": "demo/stm32u385xx",
+          "name": "build/demo",
+          "westBuildArgs": [],
+          "westBuildCMakeArgs": [],
+          "confFiles": {
+            "config": [],
+            "overlay": []
+          },
+          "activeProfile": "pyocd"
+        },
+        "build/native_sim": {
+          "relBoardSubDir": "native/native_sim",
+          "board": "native_sim/native",
+          "name": "build/native_sim",
+          "westBuildArgs": [],
+          "westBuildCMakeArgs": [],
+          "confFiles": {
+            "config": [],
+            "overlay": []
+          },
+          "activeProfile": "native"
+        }
+      },
+      "twisterConfigs": {},
+      "confFiles": {
+        "config": [],
+        "overlay": []
+      }
     }
   },
   "runnerProfiles": [
