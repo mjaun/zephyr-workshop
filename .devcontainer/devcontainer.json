@@ -10,8 +10,6 @@
     "--network=host"
   ],
   "mounts": [
-    "type=bind,source=${env:HOME}/.ssh,target=/home/user/.ssh",
-    "type=bind,source=${env:HOME}/.gitconfig,target=/home/user/.gitconfig",
     "type=bind,source=/dev,target=/dev"
   ],
   "customizations": {
