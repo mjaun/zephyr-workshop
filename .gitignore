@@ -1,5 +1,6 @@
 .venv/
-external
-**/build*/
+.idea/
+external/
+build*/
 .vscode/compile_commands.json
 .vscode/extensions.json
