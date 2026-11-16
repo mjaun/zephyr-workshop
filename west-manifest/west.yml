@@ -11,3 +11,5 @@ manifest:
           - segger
           - hal_stm32
           - hal_st
+          - mcuboot
+          - mbedtls

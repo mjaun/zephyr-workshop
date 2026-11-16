@@ -1,6 +1,7 @@
 # keep first
 board_runner_args(stm32cubeprogrammer "--port=swd" "--reset-mode=hw")
 board_runner_args(pyocd "--target=stm32u385rgtxq")
+board_runner_args(pyocd "--dt-flash=n")
 board_runner_args(jlink "--device=STM32U385RG" "--reset-after-load")
 
 # keep first

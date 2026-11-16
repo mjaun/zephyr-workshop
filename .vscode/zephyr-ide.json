@@ -8,7 +8,9 @@
           "relBoardSubDir": "demo",
           "board": "demo",
           "name": "build/demo",
-          "westBuildArgs": [],
+          "westBuildArgs": [
+            "--sysbuild"
+          ],
           "westBuildCMakeArgs": [],
           "confFiles": {
             "config": [],
