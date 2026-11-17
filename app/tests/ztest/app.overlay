@@ -1,0 +1,19 @@
+#include <zephyr/dt-bindings/pwm/pwm.h>
+
+/ {
+	/* FFF-based fake PWM controller; 1 GHz so that 1 cycle == 1 ns */
+	fake_pwm: fake_pwm {
+		compatible = "zephyr,fake-pwm";
+		#pwm-cells = <2>;
+		frequency = <1000000000>;
+		status = "okay";
+	};
+
+	buzzer: buzzer {
+		compatible = "buzzer";
+		pwm = <&fake_pwm>;
+		channel = <2>;
+		flags = <PWM_POLARITY_INVERTED>;
+		status = "okay";
+	};
+};
