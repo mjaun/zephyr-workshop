@@ -20,6 +20,12 @@
 	status = "okay";
 };
 
+// USB clock. Clock recovery (CRS) is enabled in board.c, as the Zephyr clock
+// driver does not support the crs-usb-sof property for STM32U3.
+&clk_hsi48 {
+	status = "okay";
+};
+
 // Currently unused, but produces compiler warning if disabled
 &clk_msik {
 	status = "okay";
@@ -45,6 +51,18 @@
 	pinctrl-names = "default";
 	current-speed = <115200>;
 	status = "okay";
+};
+
+// USB-C user connector
+zephyr_udc0: &usb {
+	pinctrl-0 = <&usb_dm_pa11 &usb_dp_pa12>;
+	pinctrl-names = "default";
+	status = "okay";
+
+	// serial port used for firmware updates
+	dfu_uart: dfu_uart {
+		compatible = "zephyr,cdc-acm-uart";
+	};
 };
 
 &flash0 {
