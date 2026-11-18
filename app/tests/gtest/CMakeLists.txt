@@ -24,5 +24,6 @@ target_sources(app PRIVATE
     ${WEST_ROOT}/app/src/BuzzerController.cpp
     ${WEST_ROOT}/app/src/frequency.c
     src/BuzzerControllerTest.cpp
+    src/SensorReaderTest.cpp
     src/main.cpp
 )

@@ -15,6 +15,11 @@ public:
         k_timer_user_data_set(&_timer, this);
     }
 
+    ~SoftwareTimer()
+    {
+        k_timer_stop(&_timer);
+    }
+
     void start(std::chrono::milliseconds period)
     {
         k_timer_start(&_timer, K_MSEC(period.count()), K_MSEC(period.count()));
